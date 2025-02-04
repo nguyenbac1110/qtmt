@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.8
+Created-By: 1.8.0_211-b12 (Oracle Corporation)
+Class-Path: lib/SCP_MessageBroker_Client_v1.4.jar lib/json-20160810.ja
+ r lib/platform-common-1.0-SNAPSHOT.jar lib/gson-2.8.5.jar lib/${libs.
+ beans-binding.classpath} lib/SCP_MessageBroker_Client_v1.4.jar lib/gs
+ on-2.8.5.jar lib/json-20160810.jar lib/platform-common-1.0-SNAPSHOT.j
+ ar lib/org.eclipse.paho.mqttv5.client-1.2.5.jar lib/jfreechart-demo-1
+ .5.2-jar-with-dependencies.jar
+X-COMMENT: Main-Class will be added automatically by build
+Main-Class: clientsample.ClientSample
+

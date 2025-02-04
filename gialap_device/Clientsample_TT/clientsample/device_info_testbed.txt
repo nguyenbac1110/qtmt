@@ -1,0 +1,8 @@
+[
+{
+"rn":"DeviceHungNdtest",
+"aeId":"S3139c988-7a5a-4b8c-a936-0538a03ed4ab",
+"token":"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ0ay05ZTdiZDg0Mi1mZWE1LTRmODYtYjQyMS03ZDI4YTliNjZhOTQiLCJleHAiOjE3MzAxMDI5OTZ9.Gsb1s8LQirJIfz6gOf8vN14V3YsNKdYlGBho2v53YbQ",
+"appName":"DeviceHungNdtest"
+}
+]

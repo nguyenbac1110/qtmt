@@ -1,0 +1,30 @@
+{
+    "content": [
+        {
+            "name": "Device Name 01",
+            "deviceCode": "Device Code 01",
+            "createTime": "Jan 4, 2025, 10:57:23 PM"
+        },
+        {
+            "name": "Device Name 02",
+            "deviceCode": "Device Code 02",
+            "createTime": "Jan 4, 2025, 10:57:23 PM"
+        },
+        {
+            "name": "Device Name 03",
+            "deviceCode": "Device Code 03",
+            "createTime": "Jan 4, 2025, 10:57:23 PM"
+        },
+        {
+            "name": "Device Name 04",
+            "deviceCode": "Device Code 04",
+            "createTime": "Jan 4, 2025, 10:57:23 PM"
+        },
+        {
+            "name": "Device Name 05",
+            "deviceCode": "Device Code 05",
+            "createTime": "Jan 4, 2025, 10:57:23 PM"
+        }
+    ],
+    "total": 100
+}

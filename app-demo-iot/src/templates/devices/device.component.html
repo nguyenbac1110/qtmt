@@ -1,0 +1,58 @@
+<div>
+    <div style="display: flex; justify-content: space-between;">
+        <p-button label="Thêm thiết bị" (click)="openFormAddDevice()"/>
+        <p-button severity="info" label="Tải lại" (click)="reload()"/>
+    </div>
+    <p-dialog header="Thêm thiết bị" [modal]="true" [(visible)]="isOpenAddDevice" [style]="{ width: '500px' }">
+        <div style="display: flex;justify-content: flex-start;align-items: center;">
+            <label for="deviceName" style="min-width: 150px;font-weight: bold;">Tên thiết bị</label>
+            <input pInputText id="deviceName" style="display: block; flex-grow: 1;" autocomplete="off" [(ngModel)]="device.deviceName" placeholder="Nhập tên thiết bị"/>
+        </div>
+        <div style="display: flex; justify-content: center;margin-top: 12px;">
+            <p-button [style]="{'margin-right': '8px'}" label="Hủy" severity="secondary" (click)="isOpenAddDevice = false" />
+            <p-button label="Thêm" (click)="addDevice()" />
+        </div>
+    </p-dialog>
+    <p-table
+        [value]="dataSet.content"
+        [paginator]="true"
+        [rows]="pageSize"
+        [first]="rowFirst"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '100%' }"
+        [currentPageReportTemplate]="'Hiển thị {first} tới {last} của {totalRecords} bản ghi'"
+        (onPage)="onPage($event)"
+        [rowsPerPageOptions]="[5,10,20]"
+        [styleClass]="'p-datatable-sm'"
+        [totalRecords]="dataSet.total"
+        [lazy]="true"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:250px">Tên thiết bị</th>
+                <th style="width:250px">Mã thiết bị</th>
+                <th style="width:250px">Ngày đăng ký</th>
+            </tr>
+            <tr *ngIf="dataSet.total == 0">
+                <td [attr.colspan]="3" class="box-table-nodata">
+                    <span class="pi pi-inbox" style="font-size: x-large;">&nbsp;</span>Không có thiết bị
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #body let-device>
+            <tr>
+                <td>{{ device.name }}</td>
+                <td>{{ device.deviceCode }}</td>
+                <td>{{ formatDatetime(device.createTime) }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-toast />
+    <p-blockui [blocked]="blockedDocument">
+        <ng-template pTemplate="content">
+            <div style="display: flex;justify-content: center;align-items: center; width: 100vw;height: 100vh;">
+                <p-progressSpinner></p-progressSpinner>
+            </div>
+        </ng-template>
+    </p-blockui>
+</div>

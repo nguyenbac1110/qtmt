@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "1e005c3e-44f3-45c0-a2f8-4a28cba9fc28",
+		"name": "IoT_example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2736452"
+	},
+	"item": [
+		{
+			"name": "registerApp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; ty=2"
+					},
+					{
+						"key": "X-M2M-Origin",
+						"value": "{{appId}}"
+					},
+					{
+						"key": "X-M2M-RI",
+						"value": "m_createAE{{$randomBankAccount}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"m2m:ae\":{\r\n\t  \"api\": \"{{appAPIID}}\",\r\n\t  \"rr\" : true,\r\n\t  \"poa\": [\"mqtt://{{appId}}\"],\r\n\t  \"rn\" : \"{{appName}}\",\r\n\t  \"srv\" : [\"3\"]\t\r\n\t}\r\n}"
+				},
+				"url": {
+					"raw": "https://oneiot.com.vn:9443/~/in-cse/in-name/",
+					"protocol": "https",
+					"host": [
+						"oneiot",
+						"com",
+						"vn"
+					],
+					"port": "9443",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creSub telemetry device",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; ty=23"
+					},
+					{
+						"key": "X-M2M-Origin",
+						"value": "{{app_id}}"
+					},
+					{
+						"key": "X-M2M-RI",
+						"value": "m_createSub{{$randomBankAccount}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"m2m:sub\" : {\r\n          \"rn\": \"sub_telemetry\",\r\n          \"enc\": {\r\n               \"net\": [3]\r\n           },\r\n          \"nu\": \"{{appId}}\",\r\n          \"nct\": 1\r\n       }\r\n   }\r\n"
+				},
+				"url": {
+					"raw": "https://oneiot.com.vn:9443/~/in-cse/in-name/{{deviceName}}/cnt_telemetry",
+					"protocol": "https",
+					"host": [
+						"oneiot",
+						"com",
+						"vn"
+					],
+					"port": "9443",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"{{deviceName}}",
+						"cnt_telemetry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createDevice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deviceList\": [\n        {\n            \"deviceName\": \"{{deviceName}}\",\n            \"deviceType\": 2\n        }\n    ],\n    \"appId\": \"{{appId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://oneiot.com.vn:9443/public/device/createDevice",
+					"protocol": "https",
+					"host": [
+						"oneiot",
+						"com",
+						"vn"
+					],
+					"port": "9443",
+					"path": [
+						"public",
+						"device",
+						"createDevice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send command",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; ty=4"
+					},
+					{
+						"key": "X-M2M-Origin",
+						"value": "{{appId}}"
+					},
+					{
+						"key": "X-M2M-RI",
+						"value": "m_createCi{{$randomBankAccount}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"m2m:cin\": {\r\n        \"cnf\": \"text/plains:0\",\r\n        \"con\": \"{\\\"commandId\\\":\\\"turn_on\\\",\\\"name\\\":\\\"turn_on\\\",\\\"data\\\":\\\"on\\\",\\\"commandType\\\":\\\"Control\\\",\\\"recordId\\\":\\\"randomString\\\"}\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://oneiot.com.vn:9443/~/in-cse/in-name/{{deviceName}}/cnt_command",
+					"protocol": "https",
+					"host": [
+						"oneiot",
+						"com",
+						"vn"
+					],
+					"port": "9443",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"{{deviceName}}",
+						"cnt_command"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "appId",
+			"value": "appId",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "token",
+			"type": "string"
+		},
+		{
+			"key": "appName",
+			"value": "appName",
+			"type": "string"
+		},
+		{
+			"key": "appAPIID",
+			"value": "appAPIID",
+			"type": "string"
+		},
+		{
+			"key": "deviceName",
+			"value": "deviceName",
+			"type": "string"
+		}
+	]
+}

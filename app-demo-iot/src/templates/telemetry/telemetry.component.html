@@ -1,0 +1,15 @@
+<div>
+    <div style="display: flex;justify-content: space-between; align-items: center;margin-bottom: 12px;">
+        <p-select [options]="devices" [style]="{'width':'250px'}" (ngModelChange)="changeDevice($event)" [(ngModel)]="deviceSelected" optionLabel="name" placeholder="Chọn device" />
+        <p-button severity="info" label="Tải lại" (click)="reload()"/>
+    </div>
+    <p-chart #chart type="line" [data]="dataChart" [options]="options" [style]="{'height': '600px'}" />
+    <p-toast />
+    <p-blockui [blocked]="blockedDocument">
+        <ng-template pTemplate="content">
+            <div style="display: flex;justify-content: center;align-items: center; width: 100vw;height: 100vh;">
+                <p-progressSpinner></p-progressSpinner>
+            </div>
+        </ng-template>
+    </p-blockui>
+</div>
